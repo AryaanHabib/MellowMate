@@ -4,7 +4,7 @@ from rest_framework import status
 import openai
 
 # Set OpenAI API key
-# openai.api_key = "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"
+openai.api_key = "OPEN-AI-KEY"
 
 class ChatAPIView(APIView):
     def post(self, request):
