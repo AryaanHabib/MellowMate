@@ -1,4 +1,4 @@
-# MellowMate - AI-Powered Therapist Chat Application 💙
+# MellowMate - AI-Powered Therapist Chat Application 
 
 **MellowMate** is a next-generation AI-powered therapist designed to provide empathetic, real-time conversations tailored to Generation Z. Whether you're feeling down, need a boost, or just want someone to chat with, MellowMate is here to help. Leveraging cutting-edge AI technologies, MellowMate emulates a therapeutic experience, complete with iMessage-like chat formatting for an approachable, familiar feel.
 
