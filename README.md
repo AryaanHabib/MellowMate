@@ -1,56 +1,50 @@
-# MellowMate - AI-Powered Therapist Chat Application 
+# React + TypeScript + Vite
 
-**MellowMate** is a next-generation AI-powered therapist designed to provide empathetic, real-time conversations tailored to Generation Z. Whether you're feeling down, need a boost, or just want someone to chat with, MellowMate is here to help. Leveraging cutting-edge AI technologies, MellowMate emulates a therapeutic experience, complete with iMessage-like chat formatting for an approachable, familiar feel.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## 🚀 Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **AI Therapist**: Empathetic conversations powered by OpenAI’s GPT, continuously fine-tuned to handle therapeutic responses.
-- **iMessage-Inspired Chat UI**: An intuitive, minimalistic chat interface resembling Apple iMessage for a user-friendly experience.
-- **Customizable Conversations**: Context-aware responses that adapt to the user’s needs in real-time.
-- **Scalable Backend**: REST API powered by Django for efficient data flow and storage.
-- **Accessibility First**: A responsive and inclusive UI built with React and CSS.
+## Expanding the ESLint configuration
 
----
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-## 📸 Screenshots
+- Configure the top-level `parserOptions` property like this:
 
-### Home Page
-The clean and welcoming home screen of MellowMate.  
-![MellowMate Home Page](images/mellowmate-home.png)
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
----
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-### Chat Interface
-Familiar iMessage-inspired layout for seamless interactions.  
-![MellowMate Chat Interface](images/mellowmate-chat.png)
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
----
-
-## ⚙️ Tech Stack
-
-### Frontend:
-- **React**: Interactive, modern user interface.
-- **TypeScript**: Static typing for robustness and better development workflows.
-- **CSS**: Responsive design with emphasis on aesthetics and accessibility.
-
-### Backend:
-- **Django (REST Framework)**: API design for fast data processing and interactions.
-- **SQLite**: Lightweight database for conversation history.
-
-### AI Engine:
-- **OpenAI GPT Model**: Pre-trained AI model continuously trained to emulate therapeutic responses.
-
----
-
-## 🛠️ Installation & Setup
-
-### Prerequisites:
-- Node.js and npm installed
-- Python 3.x installed
-
-### Frontend Setup:
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/AryaanHabib/MellowMate.git
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```
